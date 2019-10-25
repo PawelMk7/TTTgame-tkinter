@@ -15,11 +15,13 @@ def buttons():
 	Returns: List of 9 buttons with grid positions.
 	"""
 	
-	global button_list
 	button_list = list()
 	for rw in range(3):
 		for col in range(3):
-			button_list.append(Button(root, text=XO_assignment, height=20, width=20).grid(row=rw, column=col))
+			button_list.append(Button(root, height=5, width=10).grid(row=rw, column=col))
+	return button_list
+
+buttons()
 
 
 

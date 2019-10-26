@@ -1,36 +1,36 @@
 from tkinter import *
 
+
+class Window(Frame):
+
+	def __init__(self, master=None, *args, **kwargs):
+		Frame.__init__(self, master, *args, **kwargs)
+		self['height'] = 600
+		self['width'] = 800
+		self['bd'] = 10
+		self['bg'] = '#ffffff'
+		self.pack_propagate(0)
+		self.pack()
+		self.scores()
+		b1 = Btn(self).grid(row=1,columnspan=2)
+
+	def scores(self):
+
+		F = Frame(bg='lightgreen')
+		player_x_score = Label(self, text=f'Player X score:', bg='lightgreen').grid(row=0, column=0, padx=100, pady=5)
+		player_o_score = Label(self, text=f'Player Y score:', bg='lightblue').grid(row=0, column=1, padx=100, pady=5)
+
+
+
+class Btn(Button):
+	def __init__(self, master, *args, **kwargs):
+		Button.__init__(self, master, *args, **kwargs)
+		self['width'] = 10
+		self['height'] = 5
+
+
 root = Tk()
-root.geometry("800x600")
 
-def number(num):
-	if num==1:
-		b1.config(text='X')
-	elif num==2:
-		b2.config(text='O')
-
-def buttons():
-	"""
-	Parameters: Function do not take any parameters.
-	Returns: List of 9 buttons with grid positions.
-	"""
-	
-	button_list = list()
-	for rw in range(3):
-		for col in range(3):
-			button_list.append(Button(root, height=5, width=10).grid(row=rw, column=col))
-	return button_list
-
-buttons()
-
-
-
-
-#b1 = Button(root, height=20, width=20, command=lambda: number(1))
-#b1.grid(row=0, column=0)
-
-#b2 = Button(root, height=20, width=20, command=lambda: number(2))
-#b2.grid(row=0, column=1)
-
+f = Window(root)
 
 root.mainloop()
